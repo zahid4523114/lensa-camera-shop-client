@@ -8,14 +8,16 @@ const Products = () => {
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/products`);
+      const res = await fetch(
+        `https://lens-lab-camera-shop-server.vercel.app/products`
+      );
       const data = res.json();
       return data;
     },
   });
 
   const handleAddProduct = (product) => {
-    fetch(`http://localhost:5000/addProduct`, {
+    fetch(`https://lens-lab-camera-shop-server.vercel.app/addProduct`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

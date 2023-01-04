@@ -7,6 +7,7 @@ import App from "./App";
 import { Toaster } from "react-hot-toast";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ContextProvider from "./components/context/ContextProvider";
 
 AOS.init({
   // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
@@ -26,7 +27,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <ContextProvider>
+        <App />
+      </ContextProvider>
       <Toaster />
     </QueryClientProvider>
   </React.StrictMode>

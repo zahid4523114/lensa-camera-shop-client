@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Projects images/logo1-N3XMXXM-1536x398.png";
+import { AuthContext } from "../context/ContextProvider";
+import { toast } from "react-hot-toast";
 
 const Header = () => {
+  const { user, userSignOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    userSignOut()
+      .then(() => {
+        toast.success("You have logged out");
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="">
       <div className="navbar lg:px-10 bg-base-200">
@@ -29,17 +43,33 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li className="font-bold ">
-                <Link>Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li className="font-bold " tabIndex={0}>
-                <Link className="justify-between">Shop</Link>
+                <Link to="/products" className="justify-between">
+                  Shop
+                </Link>
               </li>
               <li className="font-bold ">
-                <Link>Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
-              <li className="font-bold ">
-                <Link>Log In</Link>
-              </li>
+              {user?.email ? (
+                <li className="font-bold ">
+                  <Link onClick={handleSignOut}>
+                    {" "}
+                    <span
+                      className="tooltip tooltip-right"
+                      data-tip="click to Sign Out"
+                    >
+                      {user?.displayName}
+                    </span>
+                  </Link>
+                </li>
+              ) : (
+                <li className="font-bold ">
+                  <Link to="/logIn">Log In</Link>
+                </li>
+              )}
             </ul>
           </div>
           <Link className=" normal-case text-xl">
@@ -57,9 +87,22 @@ const Header = () => {
             <li className="font-bold ml-5">
               <Link to="/contact">Contact</Link>
             </li>
-            <li className="font-bold ml-5">
-              <Link>Log In</Link>
-            </li>
+            {user?.email ? (
+              <li className="font-bold ">
+                <Link onClick={handleSignOut}>
+                  <span
+                    className="tooltip tooltip-right"
+                    data-tip="click to Sign Out"
+                  >
+                    {user?.displayName}
+                  </span>
+                </Link>
+              </li>
+            ) : (
+              <li className="font-bold ">
+                <Link to="/logIn">Log In</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">

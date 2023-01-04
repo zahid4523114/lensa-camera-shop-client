@@ -6,20 +6,25 @@ const Cart = () => {
   const { data: AddedProducts = [], refetch } = useQuery({
     queryKey: ["AddedProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/AddedProducts`);
+      const res = await fetch(
+        `https://lens-lab-camera-shop-server.vercel.app/AddedProducts`
+      );
       const data = res.json();
       return data;
     },
   });
 
   const handleProductDelete = (id) => {
-    fetch(`http://localhost:5000/AddedProducts/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://lens-lab-camera-shop-server.vercel.app/AddedProducts/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          toast.error("Product removed from cart");
+          toast.error("Product removed from cart!");
           refetch();
         }
         console.log(data);

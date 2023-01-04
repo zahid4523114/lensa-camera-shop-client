@@ -1,5 +1,6 @@
 import React from "react";
 import heroLogo from "../../Projects images/professional-digital-lensremovebg-preview.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -20,7 +21,9 @@ const Home = () => {
               professionals and those who desire to take higher-quality
               photographs.
             </p>
-            <button className="btn">Get Started</button>
+            <Link to="/products">
+              <button className="btn">Get Started</button>
+            </Link>
           </div>
         </div>
       </div>

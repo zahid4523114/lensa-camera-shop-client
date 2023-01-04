@@ -11,8 +11,9 @@ const Advertise = () => {
         <div>
           <h1 className="font-bold text-4xl">Shop & Save More Cashback</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius nulla
-            dolorum ea aliquid molestiae quae, praesentium est sequi ab ut!
+            Shopping is an activity in which a customer browses the available
+            goods or services presented by one or more retailers with the
+            potential intent to purchase a suitable selection of them.
           </p>
         </div>
         <div className="w-1/2">
@@ -26,9 +27,9 @@ const Advertise = () => {
         <div>
           <h1 className="font-bold text-4xl">Shop Now!</h1>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
-            totam laudantium accusamus ex voluptatem veritatis ullam distinctio
-            architecto ad iste.
+            Shop now to get discount . A customer browses the available goods or
+            services presented by one or more retailers with the potential
+            intent to purchase a suitable selection of them.
           </p>
         </div>
         <div className="w-1/2">

@@ -4,6 +4,9 @@ import Banner from "../components/Banner/Banner";
 import Cart from "../components/cart/Cart";
 import Products from "../components/products/Products";
 import Contact from "../components/contact/Contact";
+import LogIn from "../components/login/LogIn";
+import SignUp from "../components/signUp/SignUp";
+import PrivateRoute from "../components/privateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +23,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart></Cart>,
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/products",
@@ -29,6 +36,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/logIn",
+        element: <LogIn></LogIn>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },
